@@ -24,16 +24,6 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
-;; org emphasis
-(org-hide-emphasis-markers t)
-(defun org-toggle-emphasis ()
-  "Toggle hiding/showing of org emphasize markers."
-  (interactive)
-  (if org-hide-emphasis-markers
-      (set-variable 'org-hide-emphasis-markers nil)
-    (set-variable 'org-hide-emphasis-markers t)))
-(define-key org-mode-map (kbd "C-c e") 'org-toggle-emphasis)
-
 ;; recent files
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
