@@ -83,6 +83,12 @@
   :ensure t
   :config (which-key-mode))
 
+;; flycheck
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+
 ;; org-superstar
 (use-package org-superstar
   :ensure t
