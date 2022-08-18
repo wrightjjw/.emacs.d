@@ -7,7 +7,6 @@
   ;; set prefix for lsp-comand-keymap (suggested alternatives: "C-c l", "C-l")
   (setq lsp-keymap-prefix "C-l")
   :hook ;; modes to use for LSP
-  (powershell-mode . lsp)
   (lsp-mode . lsp-enable-which-key-integration)
   :commands lsp)
 
