@@ -1,5 +1,9 @@
+init.el
+
 auto-save-list/
 elpa/
 recentf
 .last-package-update-day
 /*~
+ido.last
+transient/

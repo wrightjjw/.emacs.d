@@ -5,16 +5,30 @@
 (tool-bar-mode -1)
 (setq display-line-numbers 'visual)
 
+;; font
+(add-to-list 'default-frame-alist '(font . "Cascadia Mono PL-11"))
+
+;; wrap text
+(add-hook 'text-mode-hook 'visual-line-mode)
+
 ;; set no lsp (gets set when loading lsp.el)
 (setq use-lsp-mode nil)
 
-;; font
-(add-to-list 'default-frame-alist '(font . "Cascadia Mono PL-11"))
+;; recent files
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(setq recentf-max-saved-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;; ido
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
+
+
+;;;;;;;;;;;;;;;;
+;;; PACKAGES ;;;
+;;;;;;;;;;;;;;;;
 
 ;; melpa
 (require 'package)
@@ -25,16 +39,40 @@
   (package-install 'use-package))
 (require 'use-package)
 
+;; auto-update
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+
 ;; evil
 (use-package evil
              :ensure t
 	     :config (require 'evil)
+	     (setq evil-want-integration t)
+	     (setq evil-want-keybinding nil)
 	     (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config (evil-collection-init))
+
+;; magit
+(use-package magit
+  :ensure t)
 
 ;; which-key
 (use-package which-key
   :ensure t
   :config (which-key-mode))
+
+;; org-superstar
+(use-package org-superstar
+  :ensure t
+  :hook (org-mode . (lambda () (org-superstar-mode 1))))
 
 ;; doom themes
 (use-package doom-themes
@@ -50,3 +88,25 @@
 ;;             :ensure t
 ;;	     :config
 ;;	       (load-theme 'atom-one-dark t))
+
+
+;;;;;;;;;;;;;
+;;; HOOKS ;;;
+;;;;;;;;;;;;;
+
+(add-hook 'org-mode-hook
+	  (lambda () (org-hide-emphasis-markers t)))
+
+;;;;;;;;;;;;;;;;
+;;; KEYBINDS ;;;
+;;;;;;;;;;;;;;;;
+
+;; org emphasis C-c e
+(org-hide-emphasis-markers t)
+(defun org-toggle-emphasis ()
+  "Toggle hiding/showing of org emphasize markers."
+  (interactive)
+  (if org-hide-emphasis-markers
+      (setq org-hide-emphasis-markers nil)
+    (setq org-hide-emphasis-markers t)))
+(define-key org-mode-map (kbd "C-c e") 'org-toggle-emphasis)
