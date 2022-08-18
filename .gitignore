@@ -2,6 +2,10 @@ init.el
 
 auto-save-list/
 elpa/
+
+ido.last
+network-security.data
+
 recentf
 .last-package-update-day
 /*~
