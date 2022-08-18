@@ -8,7 +8,6 @@
 (setq display-line-numbers-type 'visual)
 
 ;; font
-(add-to-list 'default-frame-alist '(font . "Cascadia Mono PL-11"))
 (add-to-list 'default-frame-alist '(font . "CaskaydiaCove NF-10"))
 
 ;; wrap text
@@ -32,7 +31,7 @@
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;; org emphasis
-(add-hook 'org-mode-hook (lambda () (org-hide-emphasis-markers t)))
+(setq org-hide-emphasis-markers t)
 (defun org-toggle-emphasis ()
   "Toggle hiding/showing of org emphasize markers."
   (interactive)
@@ -64,9 +63,10 @@
 ;; evil
 (use-package evil
              :ensure t
-	     :config (require 'evil)
+	     :init
 	     (setq evil-want-integration t)
 	     (setq evil-want-keybinding nil)
+	     :config (require 'evil)
 	     (evil-mode 1))
 
 (use-package evil-collection
@@ -108,15 +108,12 @@
 ;;; HOOKS ;;;
 ;;;;;;;;;;;;;
 
-(add-hook 'org-mode-hook
-	  (lambda () (org-hide-emphasis-markers t)))
 
 ;;;;;;;;;;;;;;;;
 ;;; KEYBINDS ;;;
 ;;;;;;;;;;;;;;;;
 
 ;; org emphasis C-c e
-(org-hide-emphasis-markers t)
 (defun org-toggle-emphasis ()
   "Toggle hiding/showing of org emphasize markers."
   (interactive)
