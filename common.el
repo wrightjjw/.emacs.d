@@ -9,6 +9,7 @@
 
 ;; font
 (add-to-list 'default-frame-alist '(font . "CaskaydiaCove NF-10"))
+(add-to-list 'default-frame-alist '(font . "CaskaydiaCove Nerd Font-10"))
 
 ;; wrap text
 (add-hook 'text-mode-hook 'visual-line-mode)
