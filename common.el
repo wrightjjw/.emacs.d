@@ -67,6 +67,7 @@
 	     (setq evil-want-integration t)
 	     (setq evil-want-keybinding nil)
 	     :config (require 'evil)
+	     (evil-set-undo-system 'undo-redo)
 	     (evil-mode 1))
 
 (use-package evil-collection
