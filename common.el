@@ -8,8 +8,14 @@
 (setq display-line-numbers-type 'visual)
 
 ;; font
-(add-to-list 'default-frame-alist '(font . "CaskaydiaCove NF-10"))
-(add-to-list 'default-frame-alist '(font . "CaskaydiaCove Nerd Font-10"))
+(cond
+ ((find-font (font-spec :name "CaskaydiaCove NF"))
+  (add-to-list 'default-frame-alist '(font . "CaskaydiaCove NF-10")))
+ ((find-font (font-spec :name "CaskaydiaCove Nerd Font"))
+  (add-to-list 'default-frame-alist '(font . "CaskaydiaCove Nerd Font-10")))
+ ((find-font (font-spec :name "Cascadia Code"))
+  (add-to-list 'default-frame-alist '(font . "Cascadia Code-10")))
+ )
 
 ;; wrap text
 (add-hook 'text-mode-hook 'visual-line-mode)
@@ -75,6 +81,21 @@
   :after evil
   :ensure t
   :config (evil-collection-init))
+
+;; treemacs
+(use-package treemacs
+  :ensure t
+  :bind
+  (:map global-map
+	("<f2>" . treemacs)))
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+  
+;; company mode (in-buffer popups)
+(use-package company
+  :ensure t
+  :config (global-company-mode))
 
 ;; magit
 (use-package magit
