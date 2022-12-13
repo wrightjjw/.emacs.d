@@ -67,12 +67,11 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
 ;; evil
 (use-package evil
              :ensure t
-	     :init
-	     (setq evil-want-integration t)
-	     (setq evil-want-keybinding nil)
 	     :config (require 'evil)
 	     (evil-set-undo-system 'undo-redo)
 	     (evil-mode 1))
@@ -81,6 +80,10 @@
   :after evil
   :ensure t
   :config (evil-collection-init))
+
+;; eglot
+(use-package eglot
+  :ensure t)
 
 ;; treemacs
 (use-package treemacs
@@ -131,6 +134,12 @@
 ;;             :ensure t
 ;;	     :config
 ;;	       (load-theme 'atom-one-dark t))
+
+;;;;;;;;;;;;;;;;;;;;
+;;; ORG SETTINGS ;;;
+;;;;;;;;;;;;;;;;;;;;
+(setq org-export-with-section-numbers nil)
+(setq org-startup-indented t)
 
 
 ;;;;;;;;;;;;;
