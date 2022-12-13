@@ -81,6 +81,10 @@
   :ensure t
   :config (evil-collection-init))
 
+;; evil numbers
+(use-package evil-numbers
+  :ensure t)
+
 ;; eglot
 (use-package eglot
   :ensure t)
