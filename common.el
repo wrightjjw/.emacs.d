@@ -17,6 +17,12 @@
   (add-to-list 'default-frame-alist '(font . "Cascadia Code-10")))
  )
 
+(require 'org)
+(set-face-attribute 'org-document-title nil :height 1.8)
+(set-face-attribute 'org-level-1 nil :height 1.5)
+(set-face-attribute 'org-level-2 nil :height 1.3)
+(set-face-attribute 'org-level-3 nil :height 1.1)
+
 ;; wrap text
 (add-hook 'text-mode-hook 'visual-line-mode)
 
@@ -45,7 +51,6 @@
   (if org-hide-emphasis-markers
       (set-variable 'org-hide-emphasis-markers nil)
     (set-variable 'org-hide-emphasis-markers t)))
-;;(define-key org-mode-map (kbd "C-c e") 'org-toggle-emphasis)
 
 ;; melpa
 (require 'package)
@@ -67,12 +72,11 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
 ;; evil
 (use-package evil
              :ensure t
-	     :init
-	     (setq evil-want-integration t)
-	     (setq evil-want-keybinding nil)
 	     :config (require 'evil)
 	     (evil-set-undo-system 'undo-redo)
 	     (evil-mode 1))
@@ -89,7 +93,7 @@
 ;; eglot
 (use-package eglot
   :ensure t)
-  
+
 ;; company mode (in-buffer popups)
 (use-package company
   :ensure t
@@ -102,9 +106,7 @@
 ; I assume the dependency will eventually be removed.
 (use-package compat
   :ensure t)
-
 (use-package magit
-  :after (compat)
   :ensure t)
 
 ;; which-key
@@ -112,7 +114,7 @@
   :ensure t
   :config (which-key-mode))
 
-; org-superstar
+;; org-superstar
 (use-package org-superstar
   :ensure t
   :hook (org-mode . (lambda () (org-superstar-mode 1))))
@@ -133,11 +135,11 @@
   (global-set-key [f8] 'neotree-toggle)
   (setq neo-smart-open t))
 
-;; tree-sitter-langs
-(require 'treesit)
-(use-package tree-sitter-langs
-  :ensure t)
-(add-to-list 'treesit-extra-load-path "C:/emacs/lib")
+;;;;;;;;;;
+;; csharp settings
+(require 'csharp-mode)
+(setq csharp-want-imenu nil)
+(add-hook 'csharp-mode-hook 'eglot-ensure)
 
 
 ;; atom-one-dark-theme
@@ -146,16 +148,10 @@
 ;;	     :config
 ;;	       (load-theme 'atom-one-dark t))
 
-
-;;;;;;;;;;
-;; csharp settings
-(require 'csharp-mode)
-(setq csharp-want-imenu nil)
-(add-hook 'csharp-mode-hook 'eglot-ensure)
-
 ;;;;;;;;;;;;;;;;;;;;
 ;;; ORG SETTINGS ;;;
 ;;;;;;;;;;;;;;;;;;;;
+(require 'org)
 (setq org-export-with-section-numbers nil)
 (setq org-startup-indented t)
 
@@ -170,8 +166,6 @@
 ;;;;;;;;;;;;;;;;
 
 ;; org emphasis C-c e
-(require 'org)
-
 (defun org-toggle-emphasis ()
   "Toggle hiding/showing of org emphasize markers."
   (interactive)
@@ -180,16 +174,18 @@
     (setq org-hide-emphasis-markers t)))
 (define-key org-mode-map (kbd "C-c e") 'org-toggle-emphasis)
 
-(require 'evil)
-(evil-set-leader 'normal (kbd "<SPC>"))
-(evil-define-key 'normal 'global (kbd "<leader>ff") 'find-file)
-(evil-define-key 'normal 'global (kbd "<leader>fd") 'dired)
-(evil-define-key 'normal 'global (kbd "<leader>g") 'magit)
+;; zooming
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 
-(evil-define-key 'normal 'global (kbd "<leader>oa") 'org-agenda)
+;; leader keybinds
+(evil-define-key 'normal 'global (kbd "SPC f f") 'find-file)
+(evil-define-key 'normal 'global (kbd "SPC f d") 'dired)
+(evil-define-key 'normal 'global (kbd "SPC f g") 'magit)
 
-;; eglot
-(evil-define-key 'normal 'global (kbd "<leader>ea") 'eglot-code-actions)
-(evil-define-key 'normal 'global (kbd "<leader>efi") 'eglot-find-implementation)
-(evil-define-key 'normal 'global (kbd "<leader>efd") 'eglot-find-declaration)
+(evil-define-key 'normal 'global (kbd "SPC o a") 'org-agenda)
+
+(evil-define-key 'normal 'global (kbd "SPC e a") 'eglot-code-actions)
+(evil-define-key 'normal 'global (kbd "SPC o a") 'eglot-find-implementation)
+(evil-define-key 'normal 'global (kbd "SPC o a") 'eglot-find-declaration)
 

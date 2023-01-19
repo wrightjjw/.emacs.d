@@ -9,4 +9,6 @@
 ;; individual langs. Do not use if loaded by a previous file.
 ;;(load "~/.emacs.d/langs/csharp.el")     ;; used by work.el
 ;;(load "~/.emacs.d/langs/powershell.el") ;; used by work.el
+;;(load "~/.emacs.d/langs/rust.el")
+;;(load "~/.emacs.d/langs/web.el")
 ;;(load "~/.emacs.d/langs/yaml.el")
