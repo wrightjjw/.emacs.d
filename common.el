@@ -17,6 +17,11 @@
   (add-to-list 'default-frame-alist '(font . "Cascadia Code-10")))
  )
 
+(set-face-attribute 'org-document-title nil :height 1.8)
+(set-face-attribute 'org-level-1 nil :height 1.5)
+(set-face-attribute 'org-level-2 nil :height 1.3)
+(set-face-attribute 'org-level-3 nil :height 1.1)
+
 ;; wrap text
 (add-hook 'text-mode-hook 'visual-line-mode)
 
@@ -142,6 +147,7 @@
 ;;;;;;;;;;;;;;;;;;;;
 ;;; ORG SETTINGS ;;;
 ;;;;;;;;;;;;;;;;;;;;
+(require 'org)
 (setq org-export-with-section-numbers nil)
 (setq org-startup-indented t)
 
@@ -163,3 +169,12 @@
       (setq org-hide-emphasis-markers nil)
     (setq org-hide-emphasis-markers t)))
 (define-key org-mode-map (kbd "C-c e") 'org-toggle-emphasis)
+
+;; zooming
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+
+;; leader keybinds
+(evil-define-key 'normal 'global (kbd "SPC f f") 'find-file)
+(evil-define-key 'normal 'global (kbd "SPC f d") 'dired)
+
