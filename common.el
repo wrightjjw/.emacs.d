@@ -72,11 +72,12 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil)
 ;; evil
 (use-package evil
              :ensure t
+	     :init
+ 	     (setq evil-want-integration t)
+	     (setq evil-want-keybinding nil)
 	     :config (require 'evil)
 	     (evil-set-undo-system 'undo-redo)
 	     (evil-mode 1))
