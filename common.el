@@ -180,12 +180,26 @@
 
 ;; leader keybinds
 (evil-define-key 'normal 'global (kbd "SPC f f") 'find-file)
+(evil-define-key 'normal 'global (kbd "SPC f r") 'recentf-open-files)
 (evil-define-key 'normal 'global (kbd "SPC f d") 'dired)
-(evil-define-key 'normal 'global (kbd "SPC f g") 'magit)
+
+(evil-define-key 'normal 'global (kbd "SPC g") 'magit)
+
+(evil-define-key 'normal 'global (kbd "SPC c c") 'compile)
+(evil-define-key 'normal 'global (kbd "SPC c r") 'recompile)
 
 (evil-define-key 'normal 'global (kbd "SPC o a") 'org-agenda)
 
-(evil-define-key 'normal 'global (kbd "SPC e a") 'eglot-code-actions)
-(evil-define-key 'normal 'global (kbd "SPC o a") 'eglot-find-implementation)
-(evil-define-key 'normal 'global (kbd "SPC o a") 'eglot-find-declaration)
+(evil-define-key 'normal 'global (kbd "SPC p f") 'project-find-file)
+(evil-define-key 'normal 'global (kbd "SPC p g") 'project-find-regexp)
+(evil-define-key 'normal 'global (kbd "SPC p d") 'project-dired)
+(evil-define-key 'normal 'global (kbd "SPC p s") 'project-shell)
+(evil-define-key 'normal 'global (kbd "SPC p e") 'project-eshell)
+(evil-define-key 'normal 'global (kbd "SPC p c") 'project-compile)
+(evil-define-key 'normal 'global (kbd "SPC p !") 'project-shell-command)
+(evil-define-key 'normal 'global (kbd "SPC p &") 'project-async-shell-command)
+
+(evil-define-key 'normal 'eglot-mode-map (kbd "SPC e a") 'eglot-code-actions)
+(evil-define-key 'normal 'eglot-mode-map (kbd "SPC o a") 'eglot-find-implementation)
+(evil-define-key 'normal 'eglot-mode-map (kbd "SPC o a") 'eglot-find-declaration)
 
