@@ -23,8 +23,13 @@
 (set-face-attribute 'org-level-2 nil :height 1.3)
 (set-face-attribute 'org-level-3 nil :height 1.1)
 
+(set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 120)
+
 ;; wrap text
 (add-hook 'text-mode-hook 'visual-line-mode)
+
+;; flyspell
+(add-hook 'text-mode-hook 'flyspell-mode)
 
 ;; set no lsp (gets set when loading lsp.el)
 (setq use-lsp-mode nil)
@@ -110,6 +115,17 @@
 (use-package magit
   :ensure t)
 
+;; markdown mode
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "pandoc"))
+
+;; mixed pitch mode
+(use-package mixed-pitch
+  :ensure t
+  :hook (text-mode . mixed-pitch-mode))
+
 ;; which-key
 (use-package which-key
   :ensure t
@@ -183,6 +199,9 @@
 (evil-define-key 'normal 'global (kbd "SPC f f") 'find-file)
 (evil-define-key 'normal 'global (kbd "SPC f r") 'recentf-open-files)
 (evil-define-key 'normal 'global (kbd "SPC f d") 'dired)
+
+(evil-define-key 'normal 'global (kbd "SPC b b") 'switch-to-buffer)
+(evil-define-key 'normal 'global (kbd "SPC b l") 'list-buffers)
 
 (evil-define-key 'normal 'global (kbd "SPC g") 'magit)
 
