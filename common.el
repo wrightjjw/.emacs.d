@@ -77,6 +77,11 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
+;; doom modeline
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
 ;; evil
 (use-package evil
              :ensure t
