@@ -7,6 +7,8 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'visual)
 
+(add-to-list 'default-frame-alist '(alpha-background . 93))
+
 ;; font
 (cond
  ((find-font (font-spec :name "CaskaydiaCove NF"))
