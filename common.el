@@ -165,6 +165,26 @@
 (setq csharp-want-imenu nil)
 (add-hook 'csharp-mode-hook 'eglot-ensure)
 
+;;;;;;;;;;
+;; powershell settings
+(use-package powershell
+  :config
+  (defun powershell-execute-script ()
+    "Run the powershell script in the current buffer with pwsh.
+       The current buffer must be saved to a file.
+
+       If the current buffer is not a powershell script,
+       throws an error."
+    (interactive)
+    (if (string-equal major-mode "powershell-mode")
+	(progn
+	  
+	  (shell-command (concat "pwsh -NoLogo -File " (buffer-file-name))))
+
+      (error "Not in powershell-mode!")))
+
+  (define-key powershell-mode-map (kbd "<f5>") 'powershell-execute-script))
+
 
 ;; atom-one-dark-theme
 ;;(use-package atom-one-dark-theme
@@ -229,4 +249,3 @@
 (evil-define-key 'normal 'eglot-mode-map (kbd "SPC e a") 'eglot-code-actions)
 (evil-define-key 'normal 'eglot-mode-map (kbd "SPC o a") 'eglot-find-implementation)
 (evil-define-key 'normal 'eglot-mode-map (kbd "SPC o a") 'eglot-find-declaration)
-
