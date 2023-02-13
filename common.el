@@ -1,4 +1,5 @@
 ;; setup
+;(setq debug-on-error t)
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -90,6 +91,7 @@
 	     :init
  	     (setq evil-want-integration t)
 	     (setq evil-want-keybinding nil)
+	     (setq evil-echo-state nil)
 	     :config (require 'evil)
 	     (evil-set-undo-system 'undo-redo)
 	     (evil-mode 1))
@@ -247,5 +249,5 @@
 (evil-define-key 'normal 'global (kbd "SPC p &") 'project-async-shell-command)
 
 (evil-define-key 'normal 'eglot-mode-map (kbd "SPC e a") 'eglot-code-actions)
-(evil-define-key 'normal 'eglot-mode-map (kbd "SPC o a") 'eglot-find-implementation)
-(evil-define-key 'normal 'eglot-mode-map (kbd "SPC o a") 'eglot-find-declaration)
+(evil-define-key 'normal 'eglot-mode-map (kbd "SPC e i") 'eglot-find-implementation)
+(evil-define-key 'normal 'eglot-mode-map (kbd "SPC e d") 'eglot-find-declaration)
