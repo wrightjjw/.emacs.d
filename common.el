@@ -12,10 +12,10 @@
 
 ;; font
 (cond
- ((find-font (font-spec :name "CaskaydiaCove NF"))
-  (add-to-list 'default-frame-alist '(font . "CaskaydiaCove NF-10")))
- ((find-font (font-spec :name "CaskaydiaCove Nerd Font"))
-  (add-to-list 'default-frame-alist '(font . "CaskaydiaCove Nerd Font-10")))
+; ((find-font (font-spec :name "CaskaydiaCove NF"))
+;  (add-to-list 'default-frame-alist '(font . "CaskaydiaCove NF-10")))
+; ((find-font (font-spec :name "CaskaydiaCove Nerd Font"))
+;  (add-to-list 'default-frame-alist '(font . "CaskaydiaCove Nerd Font-10")))
  ((find-font (font-spec :name "Cascadia Code"))
   (add-to-list 'default-frame-alist '(font . "Cascadia Code-10")))
  )
@@ -133,7 +133,8 @@
 ;; mixed pitch mode
 (use-package mixed-pitch
   :ensure t
-  :hook (text-mode . mixed-pitch-mode))
+  ;:hook (text-mode . mixed-pitch-mode)
+  )
 
 ;; which-key
 (use-package which-key
@@ -163,29 +164,29 @@
 
 ;;;;;;;;;;
 ;; csharp settings
-(require 'csharp-mode)
-(setq csharp-want-imenu nil)
-(add-hook 'csharp-mode-hook 'eglot-ensure)
+;(require 'csharp-mode)
+;(setq csharp-want-imenu nil)
+;(add-hook 'csharp-mode-hook 'eglot-ensure)
 
 ;;;;;;;;;;
 ;; powershell settings
-(use-package powershell
-  :config
-  (defun powershell-execute-script ()
-    "Run the powershell script in the current buffer with pwsh.
-       The current buffer must be saved to a file.
-
-       If the current buffer is not a powershell script,
-       throws an error."
-    (interactive)
-    (if (string-equal major-mode "powershell-mode")
-	(progn
-	  
-	  (shell-command (concat "pwsh -NoLogo -File " (buffer-file-name))))
-
-      (error "Not in powershell-mode!")))
-
-  (define-key powershell-mode-map (kbd "<f5>") 'powershell-execute-script))
+;(use-package powershell
+;  :config
+;  (defun powershell-execute-script ()
+;    "Run the powershell script in the current buffer with pwsh.
+;       The current buffer must be saved to a file.
+;
+;       If the current buffer is not a powershell script,
+;       throws an error."
+;    (interactive)
+;    (if (string-equal major-mode "powershell-mode")
+;	(progn
+;	  
+;	  (shell-command (concat "pwsh -NoLogo -File " (buffer-file-name))))
+;
+;      (error "Not in powershell-mode!")))
+;
+;  (define-key powershell-mode-map (kbd "<f5>") 'powershell-execute-script))
 
 
 ;; atom-one-dark-theme
