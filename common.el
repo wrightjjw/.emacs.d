@@ -162,6 +162,23 @@
   (global-set-key [f8] 'neotree-toggle)
   (setq neo-smart-open t))
 
+;; yasnipped
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
+  (add-hook 'text-mode-hook 'yas-minor-mode))
+
+;;;;;;;;;;;
+;; LANGS ;;
+;;;;;;;;;;;
+(use-package rustic
+  :ensure t
+  :config
+  (setq rustic-format-on-save t)
+  (add-hook 'rustic-mode-hook 'eglot-ensure))
+
 ;;;;;;;;;;
 ;; csharp settings
 ;(require 'csharp-mode)
