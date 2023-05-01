@@ -10,6 +10,10 @@
 
 (add-to-list 'default-frame-alist '(alpha-background . 93))
 
+;; auto-save directory
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups"))))
+
 ;; font
 (cond
 ; ((find-font (font-spec :name "CaskaydiaCove NF"))
@@ -20,6 +24,7 @@
   (add-to-list 'default-frame-alist '(font . "Cascadia Code-10")))
  )
 
+;; org setup
 (require 'org)
 (set-face-attribute 'org-document-title nil :height 1.8)
 (set-face-attribute 'org-level-1 nil :height 1.5)
@@ -257,6 +262,7 @@
 
 (evil-define-key 'normal 'global (kbd "SPC b b") 'switch-to-buffer)
 (evil-define-key 'normal 'global (kbd "SPC b l") 'list-buffers)
+(evil-define-key 'normal 'global (kbd "SPC b d") 'kill-buffer)
 
 (evil-define-key 'normal 'global (kbd "SPC g") 'magit)
 
