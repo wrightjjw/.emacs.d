@@ -1,5 +1,5 @@
 ;; setup
-;(setq debug-on-error t)
+(setq debug-on-error t)
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -27,6 +27,9 @@
 (set-face-attribute 'org-level-3 nil :height 1.1)
 
 (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 120)
+
+;; indent spaces
+(setq indent-tabs-mode nil)
 
 ;; wrap text
 (add-hook 'text-mode-hook 'visual-line-mode)
@@ -141,6 +144,11 @@
   :ensure t
   :config (which-key-mode))
 
+;; org-roam
+(use-package org-roam
+  :ensure t
+  :config (setq org-roam-database-connector 'sqlite-builtin))
+
 ;; org-superstar
 (use-package org-superstar
   :ensure t
@@ -162,7 +170,7 @@
   (global-set-key [f8] 'neotree-toggle)
   (setq neo-smart-open t))
 
-;; yasnipped
+;; yasnippet
 (use-package yasnippet
   :ensure t
   :config
