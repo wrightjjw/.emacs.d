@@ -10,6 +10,8 @@
 
 (add-to-list 'default-frame-alist '(alpha-background . 93))
 
+(defalias 'yes-or-no-p 'y-or--p) ;; only y/n
+
 ;; auto-save directory
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups"))))
