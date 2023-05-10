@@ -28,9 +28,9 @@
 
 ;; org setup
 (require 'org)
-(set-face-attribute 'org-document-title nil :height 1.8)
-(set-face-attribute 'org-level-1 nil :height 1.5)
-(set-face-attribute 'org-level-2 nil :height 1.3)
+(set-face-attribute 'org-document-title nil :height 1.5)
+(set-face-attribute 'org-level-1 nil :height 1.4)
+(set-face-attribute 'org-level-2 nil :height 1.2)
 (set-face-attribute 'org-level-3 nil :height 1.1)
 
 (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 120)
