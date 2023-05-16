@@ -183,7 +183,8 @@
   :config
   (yas-reload-all)
   (add-hook 'prog-mode-hook 'yas-minor-mode)
-  (add-hook 'text-mode-hook 'yas-minor-mode))
+  (add-hook 'text-mode-hook 'yas-minor-mode)
+  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends)))
 
 ;;;;;;;;;;;
 ;; LANGS ;;
